@@ -1,0 +1,92 @@
+<mat-card class="m-0 m-auto pb-5 mat-elevation-z8 mt-10 mr-5 ml-5">
+    <mat-card-header>
+        <mat-card-title>{{ title }}</mat-card-title>
+    </mat-card-header>
+
+    <form
+        [formGroup]="userForm"
+        (ngSubmit)="onSubmit()"
+        class="w-100"
+    >
+        <mat-card-content>
+            <mat-form-field class="w-full mb-5">
+                <mat-label>Full Name</mat-label>
+                <input
+                    matInput
+                    formControlName="user_fullname"
+                    type="text"
+                    [errorStateMatcher]="errorMatcher"
+                    [(ngModel)]="user.user_fullname"
+                >
+                <mat-error 
+                    *ngIf="userForm.get('user_fullname').invalid && userForm.get('user_fullname').touched"
+                >
+                    <span 
+                        *ngIf="userForm.get('user_fullname').errors.required"
+                    >
+                        Full Name is required
+                    </span>
+                </mat-error>
+            </mat-form-field>  
+            
+            <mat-form-field class="w-full mb-5">
+                <mat-label>Email</mat-label>
+                <input
+                    matInput
+                    formControlName="user_email"
+                    type="email"
+                    [errorStateMatcher]="errorMatcher"
+                    [(ngModel)]="user.user_email"
+                >
+                <mat-error 
+                    *ngIf="userForm.get('user_email').invalid && userForm.get('user_email').touched"
+                >
+                    <span 
+                        *ngIf="userForm.get('user_email').errors.required"
+                    >
+                        Email is required
+                    </span>
+                </mat-error>
+            </mat-form-field>  
+
+            <mat-form-field class="w-full mb-5">
+                <mat-label>Address</mat-label>
+                <input
+                    matInput
+                    formControlName="user_address"
+                    type="text"
+                    [errorStateMatcher]="errorMatcher"
+                    [(ngModel)]="user.user_address"
+                >
+                <mat-error 
+                    *ngIf="userForm.get('user_address').invalid && userForm.get('user_address').touched"
+                >
+                    <span 
+                        *ngIf="userForm.get('user_address').errors.required"
+                    >
+                        Email is required
+                    </span>
+                </mat-error>
+            </mat-form-field>  
+        </mat-card-content>
+
+        <mat-card-actions>
+            <div class="btn-actions">
+                <a
+                    [routerLink]="['/']"
+                    mat-flat-button
+                >
+                    Cancel
+                </a>
+                <button 
+                    mat-flat-button
+                    color="primary"
+                    [disabled]="userForm.invalid"
+                >
+                    {{ userId ? 'Update' : 'Save' }}
+                </button>
+            </div>
+        </mat-card-actions>
+
+    </form>
+</mat-card>
