@@ -20,7 +20,6 @@ export class UserListComponent implements OnInit {
   data: MatTableDataSource<User>
   message: string
   isEmpty = true
-  emptyMessage = 'Fetching Users'
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
   @ViewChild(MatSort, {static: true}) sort: MatSort
@@ -78,7 +77,6 @@ export class UserListComponent implements OnInit {
         this.data.paginator = this.paginator
         this.data.sort = this.sort
         this.isEmpty = (users.length < 1) ? true : false
-        this.emptyMessage = this.isEmpty ? 'No Users fetched': ''
       }, err => {
         console.log(err)
       })

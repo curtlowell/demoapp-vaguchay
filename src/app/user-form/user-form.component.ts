@@ -73,7 +73,6 @@ export class UserFormComponent implements OnInit {
     } else {
 
       const actionType = !this.userId ? { func: 'createUser', text: 'created' } : { func: 'updateUser', text: 'updated' }
-      console.log('yawaaaaaaa', this.user)
       this.userService[actionType.func](this.user as User)
         .subscribe(
           (res) => {
